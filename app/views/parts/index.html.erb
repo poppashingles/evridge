@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Outstanding parts</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th><%= link_to "Part Number", :sort => "part_number" %></th>
+      <th><%= link_to "Quantity", :sort => "quantity" %></th>
+      <th><%= link_to "Due Date", :sort => "duedate" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parts.each do |part| %>
+      <tr>
+        <td><%= part.part_number %></td>
+        <td><%= part.quantity %></td>
+        <td><%= part.duedate %></td>
+        <td><%= link_to 'Show', part %></td>
+        <td><%= link_to 'Edit', edit_part_path(part) %></td>
+        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Part', new_part_path %>
